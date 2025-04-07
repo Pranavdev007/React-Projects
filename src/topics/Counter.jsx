@@ -1,5 +1,5 @@
 //Create a counter App in which one counter moves by 1 sec and other by 1/2 sec - eg - 1st-> 1,2,3  2nd 0.5,1,1.5
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function Counter() {
   useEffect(() => {
