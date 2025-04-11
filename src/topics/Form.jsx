@@ -1,24 +1,43 @@
 import React, { useState } from "react";
 
 function Form() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+  });
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormData((preVal) => {
+      return { ...preVal, [name]: value };
+    });
+  }
+  async function handleData() {
+    const data = { name: formData.name, email: formData.email };
+    console.log(data);
 
-  function handleData() {
-    console.log(name, email);
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    console.log(res);
   }
   return (
     <div>
       <input
         type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
       />
       Name
       <input
         type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={formData.email}
+        name="email"
+        onChange={handleChange}
       />
       Email
       <button onClick={handleData}>Submit</button>
