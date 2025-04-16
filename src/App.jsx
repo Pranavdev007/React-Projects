@@ -4,7 +4,8 @@ import Carousel from "./topics/Carousel";
 import Counter from "./topics/Counter";
 
 import Form from "./topics/Form";
-
+import IncStars from "./topics/IncStars";
+import "./App.css";
 function App() {
   return (
     <div>
@@ -12,6 +13,7 @@ function App() {
       {/* <Counter /> */}
       {/* <Form /> */}
       {/* <Carousel /> */}
+      <IncStars />
     </div>
   );
 }
